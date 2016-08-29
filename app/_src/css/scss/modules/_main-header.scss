@@ -1,0 +1,92 @@
+/* _main-header.scss */
+
+/* _main-header config */
+
+/* _main-header default */
+@include layout-default {
+  .main-header {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    padding: 20px 0;
+    background-color: $main-header-bg-color;
+    box-shadow: 0px -5px 20px 18px $main-header-bg-color;
+
+    .icon,
+    .btn { transition: opacity 200ms linear }
+
+    .icon--close {
+      position: absolute;
+      right: 0.9375rem;
+      opacity: 0;
+      pointer-events: none;
+      background-color: $main-header-bg-color;
+    }
+
+    &--has-overlay {
+      box-shadow: none;
+      background-color: transparent;
+
+      .icon--playlist,
+      .icon--help,
+      .btn {
+        opacity: 0;
+        pointer-events: none;
+      }
+
+      .icon--close {
+        opacity: 1;
+        pointer-events: auto;
+      }
+    }
+
+    &__nav {
+      ul {
+        position: relative;
+        display: table;
+        width: 100%;
+        padding-left: $grid-col-padding;
+        padding-right: $grid-col-padding;
+      }
+    }
+
+    &__nav-item {
+      display: table-cell;
+      padding: 0;
+      vertical-align: middle;
+
+      &--center { text-align: center }
+      &--right { text-align: right }
+
+      .btn {
+        display: inline-block;
+        vertical-align: middle;
+      }
+    }
+  }
+
+  .main-header__logo { width: 44px; }
+}
+
+/* _main-header small */
+@include layout-small {
+
+}
+
+/* _main-header medium */
+@include layout-medium {
+
+}
+
+/* _main-header medium-and-above */
+@include layout-medium-and-above {
+
+}
+
+/* _main-header large */
+@include layout-large {
+  .main-header {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}

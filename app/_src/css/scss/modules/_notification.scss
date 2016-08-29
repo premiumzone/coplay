@@ -1,0 +1,100 @@
+/* _notification.scss */
+
+/* _notification config */
+$notification-padding: 0.875rem;
+
+/* _notification default */
+@include layout-default {
+  .notification {
+    position: absolute;
+    bottom: 1rem;
+    width: 100%;
+    padding-right: 0.9375rem;
+    padding-left: 0.9375rem;
+    color: #000;
+    opacity: 0;
+    transform: scale(0.95, 0.95);
+    transition:
+      bottom 200ms ease,
+      opacity 200ms linear,
+      transform 200ms ease;
+
+    &--visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    span {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      display: block;
+      width: 30px;
+      height: 30px;
+      transform: translate(0, -50%);
+      background-repeat: no-repeat;
+      background-size: cover;
+    }
+  }
+
+  .notification__image {
+    max-width: 90px;
+    min-height: 7.3vh;
+    float: left;
+    margin-left: -$notification-padding;
+    margin-top: -$notification-padding;
+    margin-bottom: -$notification-padding;
+  }
+
+  .notification__content {
+    position: relative;
+    background-color: #fff;
+    padding: $notification-padding;
+    box-shadow: 0 0 15px 5px rgba(0,0,0, 0.5);
+    overflow: hidden;
+
+    .notification--with-icon & { padding-right: 40px }
+  }
+
+  .notification__pre-title,
+  .notification__title,
+  .notification__sub-title {
+    margin: 0;
+    padding: 0 $notification-padding;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .notification__pre-title {
+    color: #a0a0a0;
+    font-size: 0.625rem;
+    text-transform: uppercase;
+    margin-bottom: 0.1em;
+  }
+
+  .notification__title {
+    font-weight: 500;
+    color: #000;
+  }
+}
+
+/* _notification small */
+@include layout-small {
+
+}
+
+/* _notification medium */
+@include layout-medium {
+
+}
+
+/* _notification medium-and-above */
+@include layout-medium-and-above {
+
+}
+
+/* _notification large */
+@include layout-large {
+
+}

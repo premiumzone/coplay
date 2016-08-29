@@ -1,0 +1,71 @@
+/* _user-profile.scss */
+
+/* _user-profile config */
+$user-profile-avatar-width: 80px;
+
+/* _user-profile default */
+@include layout-default {
+  .user-profile {
+    padding-right: $grid-col-padding;
+    padding-left: $grid-col-padding;
+  }
+
+  .user-profile__header {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .user-profile__avatar {
+    display: inline-block;
+    width: $user-profile-avatar-width;
+    height: $user-profile-avatar-width;
+    border-radius: 50%;
+
+    + .user-profile__full-name {
+      position: absolute;
+      left: $user-profile-avatar-width;
+      top: 50%;
+      width: calc(100% - #{$user-profile-avatar-width});
+      padding-left: $grid-col-padding;
+      transform: translate(0, -50%);
+    }
+  }
+
+  .user-profile__full-name {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .user-profile__meta-section { margin-bottom: 32px }
+
+  .user-profile__meta-title {
+    @include font-size(10px);
+    margin-bottom: 16px;
+    text-transform: uppercase;
+  }
+}
+
+/* _module small */
+@include layout-small {
+
+}
+
+/* _module medium */
+@include layout-medium {
+
+}
+
+/* _module medium-and-above */
+@include layout-medium-and-above {
+
+}
+
+/* _module large */
+@include layout-large {
+  .user-profile .playlist {
+    margin-right: -#{$grid-col-padding};
+    margin-left: -#{$grid-col-padding};
+  }
+}

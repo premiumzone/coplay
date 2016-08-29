@@ -1,0 +1,25 @@
+{
+  "name": "coplay",
+  "description": "",
+  "main": "app/index.js",
+  "authors": [
+    "Telia Company"
+  ],
+  "license": "GNU GPLv3",
+  "homepage": "https://github.com/premiumzone/coplay",
+  "moduleType": [],
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "socket.io-client": "^1.4.5",
+    "d3": "^3.5.16",
+    "handlebars": "^4.0.5"
+  }
+}

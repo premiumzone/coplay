@@ -1,0 +1,67 @@
+/* _help.scss */
+
+/* _help config */
+@keyframes help-step--connected__intro--bg {
+  0% { transform: scale(0.2) }
+
+  100% { transform: scale(1) }
+}
+
+@keyframes help-step--connected__intro--message {
+  0% {
+    transform: scale(0.7);
+    opacity: 0;
+  }
+
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* _help default */
+@include layout-default {
+	.help {
+    max-width: 400px;
+    margin-right: auto;
+    margin-left: auto;
+    padding-right: $grid-col-padding;
+    padding-left: $grid-col-padding;
+  }
+
+  .help__info-text {
+    margin-right: auto;
+    margin-left: auto;
+    text-align: center;
+    padding-left: 5%;
+    padding-right: 5%;
+
+    h2 {
+      margin-bottom: 1em;
+      font-size: 24px;
+      font-weight: 500;
+    }
+
+    p { font-size: 18px }
+  }
+}
+
+/* _help small */
+@include layout-small {
+
+}
+
+/* _help medium */
+@include layout-medium {
+
+}
+
+/* _help medium-and-above */
+@include layout-medium-and-above {
+
+}
+
+/* _help large */
+@include layout-large {
+
+}

@@ -1,0 +1,15 @@
+<div class="complete-playlist-container state-content__container state-content__container--scrollable">
+  {{#if playlist_items }}
+    <ol class="playlist">
+    {{#each playlist_items}}
+      {{> playlist_item}}
+    {{/each}}
+    </ol>
+    {{else}}
+      <h2>Playlist is empty.</h2>
+    {{/if}}
+</div>
+
+<footer class="footer__container center">
+  <a class="js-confirm-songs-to-add btn btn--expanded btn--ok" href="{{spotify_shared_playlist_url}}" target="_blank">Open in Spotify</a>
+</footer>

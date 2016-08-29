@@ -1,0 +1,23 @@
+module.exports = {
+  database: {
+    uri: 'mongodb://localhost/coplay'
+  },
+
+  spotify: {
+    clientID: '',
+    clientSecret: '',
+    redirectPath: '/',
+    enforceAuthDialog: false,
+    scopes: {
+      user: ['user-top-read'],
+      server: ['playlist-modify-private']
+    },
+    sharedAccountUsername: '',
+    sharedAccountPlaylistID: ''
+  },
+
+  zoneAPI: {
+    endpointURL: 'https://api.premiumzone.com/v1/zone',
+    key: ''
+  }
+};

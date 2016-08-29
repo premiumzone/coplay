@@ -1,0 +1,64 @@
+/* _loading-indicator.scss */
+
+/* _loading-indicator config */
+@keyframes loading-indicator-anim--fade-in-out {
+  0% { opacity: 0 }
+
+  20%,
+  80% { opacity: 1 }
+
+  100% { opacity: 0 }
+}
+
+/* _loading-indicator default */
+@include layout-default {
+  .loading-indicator {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 1.4;
+    font-weight: bold;
+    text-align: center;
+    transform: translate(-50%, -50%);
+
+    &__shape {
+      width: 50px;
+      margin: 20px auto 10px;
+      text-align: center;
+    }
+
+    &__shape-part {
+      fill: #fff;
+      opacity: 0;
+      animation: loading-indicator-anim--fade-in-out 1000ms ease infinite;
+    }
+
+    &__shape-part--1 { animation-delay: 0 }
+
+    &__shape-part--2 { animation-delay: 100ms }
+
+    &__shape-part--3 { animation-delay: 200ms }
+  }
+}
+
+/* _loading-indicator small */
+@include layout-small {
+
+}
+
+/* _loading-indicator medium */
+@include layout-medium {
+
+}
+
+/* _loading-indicator medium-and-above */
+@include layout-medium-and-above {
+
+}
+
+/* _loading-indicator large */
+@include layout-large {
+
+}

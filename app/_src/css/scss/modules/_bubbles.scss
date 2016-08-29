@@ -1,0 +1,51 @@
+/* _bubbles.scss */
+
+/* _bubbles config */
+@keyframes bubbles-grow {
+  0% {
+    opacity: 0;
+    transform: scale(0.2, 0.2);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1.0, 1.0);
+  }
+}
+
+/* _bubbles default */
+@include layout-default {
+  .bubbles__container {
+    padding-top: $main-header-height;
+
+    svg {
+      width: 100%;
+      height: 100%;
+      background: url(/static/images/coplay-background.png);
+      background-size: 150%;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: bubbles-grow 1000ms ease forwards;
+    }
+  }
+}
+
+/* _bubbles small */
+@include layout-small {
+
+}
+
+/* _bubbles medium */
+@include layout-medium {
+  .bubbles__container svg { background-size: 130% }
+}
+
+/* _bubbles medium-and-above */
+@include layout-medium-and-above {
+  .bubbles__container svg { background-size: 130% }
+}
+
+/* _bubbles large */
+@include layout-large {
+
+}

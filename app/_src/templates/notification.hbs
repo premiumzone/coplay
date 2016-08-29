@@ -1,0 +1,23 @@
+<div class="js-notification notification{{#if icon}} notification--with-icon{{/if}}">
+  <div class="js-notification__content notification__content">
+    {{#if imageURL}}
+    <img class="js-notification__image notification__image" alt="" src="{{imageURL}}">
+    {{/if}}
+
+    {{#if preTitle}}
+    <h6 class="notification__pre-title">{{preTitle}}</h6>
+    {{/if}}
+
+    {{#if title}}
+    <h5 class="notification__title">{{title}}</h5>
+    {{/if}}
+
+    {{#if subTitle}}
+    <p class="notification__sub-title">{{subTitle}}</p>
+    {{/if}}
+
+    {{#if icon}}
+    <span class="notification__icon icon icon__{{icon}}"></span>
+    {{/if}}
+  </div>
+</div>

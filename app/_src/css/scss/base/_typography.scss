@@ -1,0 +1,113 @@
+/* _typography.scss */
+
+/* _typography config */
+
+$base-font-size: 16px;
+$base-line-height: 140%;
+
+$header-margin-bottom: 0.5em;
+$header-lineheight: $base-line-height;
+
+$heading-sizes--small: (
+  'h1': 36px,
+  'h2': 24px,
+  'h3': 19px,
+  'h4': 18px,
+  'h5': 17px,
+  'h6': 16px
+);
+$heading-sizes--medium-and-above: (
+  'h1': 48px,
+  'h2': 40px,
+  'h3': 31px,
+  'h4': 25px,
+  'h5': 20px,
+  'h6': 16px
+);
+
+/* _typography mixins */
+
+@mixin font-size($size: $base-font-size) {
+  @if $size != none {
+    // if this is for the base element for `rem` (e.g. body)
+    // - use the `px` based `$base-font-size`
+    @if $size == base {
+      font-size: $base-font-size;
+
+    // if `$size` is not `px` based (e.g. if it's `em` based)
+    // - use only that value
+    } @else if unit($size) != 'px' {
+      font-size: $size;
+
+    // ok, this is not the base for `rem` and `$size` is `px` based
+    // - use both the `px` based `$size` value and a calculated `rem` value
+    } @else {
+      $rem: #{$size / $base-font-size}rem;
+      font-size: $size;
+      font-size: $rem;
+    }
+  }
+}
+
+@mixin font-base-attributes($size: none, $weight: none, $style: none, $line-height: none) {
+  @if $size != none { @include font-size($size); }
+  @if $weight != none { font-weight: $weight; }
+  @if $style != none { font-style: $style; }
+  @if $line-height != none { line-height: $line-height; }
+}
+
+@mixin base-font($size: none, $weight: none, $style: none, $line-height: none) {
+  @include font-base-attributes($size, $weight, $style, $line-height);
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+/* _typography default */
+@include layout-default {
+  body { @include base-font(base) }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin-top: 0;
+    margin-bottom: $header-margin-bottom;
+    line-height: $header-lineheight;
+    font-weight: 200;
+
+    small { line-height: 0 }
+  }
+
+  p {
+    @include font-size(16px);
+    margin-bottom: 1em;
+    line-height: $base-line-height;
+  }
+}
+
+/* _typography small */
+@include layout-small {
+  @each $header, $font-size in $heading-sizes--small {
+    #{$header} { @include font-size($font-size) }
+  }
+}
+
+/* _typography medium */
+@include layout-medium {
+
+}
+
+
+/* _typography medium-and-above */
+@include layout-medium-and-above {
+  @each $header, $font-size in $heading-sizes--medium-and-above {
+    #{$header} { @include font-size($font-size) }
+  }
+}
+
+
+/* _typography large */
+@include layout-large {
+
+}

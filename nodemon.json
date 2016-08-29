@@ -1,0 +1,11 @@
+{
+  "verbose": true,
+  "ignore": [
+    "gulpfile.js",
+    ".tmp/**/*",
+    "app/_src/**/*",
+    "app/public/**/*",
+    "spotify-tokens.json",
+    "config.json"
+  ]
+}

@@ -1,0 +1,40 @@
+/* _greeting.scss */
+
+/* greeting config */
+
+/* _greeting default */
+@include layout-default {
+  .greeting__container {
+    width: 83%;
+    margin: 40px auto 0;
+    padding-right: $grid-col-padding;
+    padding-left: $grid-col-padding;
+    text-align: center;
+  }
+
+  .greeting__paragraph {
+    max-width: 420px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* _greeting small */
+@include layout-small {
+
+}
+
+/* _greeting medium */
+@include layout-medium {
+
+}
+
+/* _greeting medium-and-above */
+@include layout-medium-and-above {
+  .greeting__container { margin-top: 140px }
+}
+
+/* _module large */
+@include layout-large {
+
+}

@@ -1,0 +1,32 @@
+/* _footer.scss */
+
+/* _footer config */
+
+/* _footer default */
+@include layout-default {
+  .footer__container {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+}
+
+/* _footer small */
+@include layout-small {
+
+}
+
+/* _footer medium */
+@include layout-medium {
+
+}
+
+/* _footer medium-and-above */
+@include layout-medium-and-above {
+
+}
+
+/* _footer large */
+@include layout-large {
+
+}

@@ -1,0 +1,107 @@
+/* _state.scss */
+
+/* _state config */
+
+/* _state default */
+@include layout-default {
+  .state {}
+
+  [data-current-state='/spotify/callback'] { padding-bottom: 71px }
+
+  [data-current-state='/spotify/skip'] {
+    .footer__container { pointer-events: auto }
+  }
+
+  .state-content {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    overflow: hidden;
+    transition:
+      opacity 500ms ease,
+      filter 200ms ease,
+      transform 200ms ease;
+
+    &--overlay {
+      background: rgba(0,0,0, 0.7);
+      transform: scale(0.95, 0.95);
+      will-change: transform, opacity;
+
+      .is-android & { background: rgba(0,0,0, 0.85) }
+    }
+
+    &:empty {
+      display: none;
+      transition: none;
+    }
+
+    &--visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    &--inactive {
+      filter: blur(10px);
+      will-change: filter, -webkit-filter;
+
+      .is-android & { filter: none }
+    }
+
+    &--joined-with-static {
+      pointer-events: none;
+
+      > * { pointer-events: none }
+    }
+  }
+
+  .state-content__container {
+    width: 100%;
+    height: 100%;
+    padding-top: $main-header-height;
+
+    &--scrollable {
+      width: 100%;
+      height: 100%;
+      padding-top: $main-header-height;
+      overflow: scroll;
+      -webkit-overflow-scrolling: touch;
+    }
+  }
+
+  .choose-songs-to-add {
+    height: 100%;
+    padding-right: $grid-col-padding;
+    padding-left: $grid-col-padding;
+    text-align: center;
+  }
+
+  .complete-playlist-container { padding-bottom: 5rem }
+
+  .help { padding-bottom: 5rem }
+}
+
+/* _state small */
+@include layout-small {
+
+}
+
+/* _state medium */
+@include layout-medium {
+
+}
+
+/* _state medium-and-above */
+@include layout-medium-and-above {
+
+}
+
+/* _state large */
+@include layout-large {
+  .state-content {
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+}

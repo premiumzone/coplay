@@ -1,0 +1,197 @@
+/* _playlist.scss */
+@keyframes playlist-item--translate-up {
+  0% {
+    transform: translateY(200px);
+    opacity: 0;
+  }
+
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+/* _playlist config */
+
+/* _playlist default */
+@include layout-default {
+  .playlist {
+    @include clearfix-overflow-visible;
+    //width: 100%;
+    text-align: left;
+
+    &--choosing-tracks { margin-bottom: 5rem }
+
+    .user-profile & {
+      padding-left: 0;
+      padding-right: 0;
+    }
+
+    .complete-playlist-container & {
+      padding-right: $grid-col-padding;
+      padding-left: $grid-col-padding;
+    }
+  }
+
+  .playlist-item {
+    position: relative;
+    margin-bottom: 5px;
+    color: #818181;
+    background: white;
+    transform: translate3d(0, 0, 0);
+
+    // lock playlist item aspect ratio
+    // - to avoid flickering before images are loaded
+    height: 0;
+    padding-top: 22.89855%;
+
+
+    // intro animation
+    transform: translateY(2000px);
+    opacity: 0;
+    animation:
+      playlist-item--translate-up
+      400ms
+      ease
+      forwards;
+    @for $i from 1 through 200 {
+      &:nth-child(#{$i}) { animation-delay: $i * 100ms }
+    }
+
+    .icon {
+      position: absolute;
+      right: 10px;
+      top: 50%;
+      display: inline-block;
+      width: 30px;
+      height: 30px;
+      transform: translate(0, -50%);
+    }
+  }
+
+  .playlist-item__inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+  }
+
+  .playlist-item__image {
+    height: 100%;
+    float: left;
+  }
+
+  .playlist-item__meta {
+    position: absolute;
+    left: 25%;
+    top: 50%;
+    width: 60%;
+    padding-left: 10px;
+    transform: translate(0, -50%);
+  }
+
+  .playlist-item__title,
+  .playlist-item__artist {
+    margin-bottom: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .playlist-item__title {
+    color: #000;
+    font-weight: 500;
+  }
+
+  .playlist-item__artist { font-size: 1rem }
+
+  .playlist-item__user-avatar {
+    border-radius: 50%;
+    background-color: blue;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  .playlist-item__disable-animation {
+    animation: none;
+  }
+}
+
+/* _playlist small */
+@include layout-small {
+
+}
+
+/* _playlist medium */
+@include layout-medium {
+
+}
+
+/* _playlist medium-and-above */
+@include layout-medium-and-above {
+
+}
+
+/* _playlist large */
+@include layout-large {
+  .playlist {
+    &--choosing-tracks {
+      padding-right: 0;
+      padding-left: 0;
+      margin-right: -#{$grid-col-padding};
+      margin-left: -#{$grid-col-padding};
+    }
+  }
+
+  .complete-playlist-container {
+    max-width: 1240px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+
+    .playlist {
+      padding-right: 0;
+      padding-left: 0;
+    }
+  }
+
+  .playlist-item {
+    height: auto;
+    margin-bottom: 30px;
+    padding-top: 0;
+    background: none;
+
+    // fix clearing of items not being the same height
+    &.col-lg-4 {
+      &:nth-child(3n + 1) { clear: left }
+      &:nth-child(3n) { clear: right }
+    }
+
+    .icon {
+      right: 30px;
+      bottom: 5px;
+      top: initial;
+    }
+  }
+
+  .playlist-item__inner {
+    position: inherit;
+    background: white;
+  }
+
+  .playlist-item__image {
+    width: 100%;
+    float: none;
+  }
+
+  .playlist-item__meta {
+    position: inherit;
+    left: 0;
+    top: 0;
+    width: 85%;
+    padding: 10px 20px;
+    transform: none;
+  }
+}

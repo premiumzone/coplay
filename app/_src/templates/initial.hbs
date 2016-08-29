@@ -1,0 +1,15 @@
+{{#unless current_user}}
+  <div class="greeting__container state-content__container row">
+    <h1>Welcome to Premium&nbsp;Zone</h1>
+    <p class="greeting__paragraph">Become a part of the Zone! Connect with Spotify to hear your favourite songs in the Telia Lounge!</p>
+  </div>
+
+  <footer class="footer__container center">
+    <p>
+      <a class="btn btn--connect-with-spotify" href="{{spotify_user_authorize_url}}">Log in with Spotify</a>
+    </p>
+    <p>
+      <button type="button" data-state="/spotify/skip" class="btn">Skip</button>
+    </p>
+  </footer>
+{{/unless}}

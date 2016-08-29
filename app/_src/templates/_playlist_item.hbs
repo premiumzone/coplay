@@ -1,0 +1,18 @@
+<li class="js-playlist-item playlist-item col col-sm-12 col-md-12 col-lg-4" data-track-uri="{{uri}}">
+  <figure class="playlist-item__inner">
+    <img class="playlist-item__image" src="{{albumArtURLs.1.url}}">
+    <figcaption class="playlist-item__meta">
+      <h6 class="playlist-item__title">{{title}}</h6>
+      <p class="playlist-item__artist">{{artistNamesFormatted}}</p>
+    </figcaption>
+  </figure>
+  {{#if added_by}}
+    <i class="playlist-item__user-avatar icon" style="background-image: url({{added_by.spotifyAvatarURL}})"></i>
+  {{else}}
+    {{#if isConfirmingTracksMode}}
+      <button type="button" class="js-remove-song btn btn--remove-song">Remove Song</button>
+    {{else}}
+      <i class="icon icon--spotify"></i>
+    {{/if}}
+  {{/if}}
+</li>

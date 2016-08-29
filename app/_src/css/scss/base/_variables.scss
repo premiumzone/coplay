@@ -1,0 +1,24 @@
+/* _variables.scss */
+
+// These are strictly global variables. If you want to define variables local
+// to a module it might be a good idea to include them in the module itself,
+// under /* _module config */
+
+/* Base */
+$base-unit: 10px;
+$site-max-width: 1240px;
+
+
+/* Breakpoints */
+$bp-small: '(max-width: 549px)';
+$bp-medium: '(min-width: 550px) and (max-width: 1000px)';
+$bp-medium-and-above: '(min-width: 550px)';
+$bp-large: '(min-width: 1001px)';
+
+/* Colors */
+$color-typography-base: white;
+$color-spotify-green: #22bf54;
+$color-purple: #990ae3;
+
+$main-header-height: 86px;
+$main-header-bg-color: rgba(0, 0, 0, 0.75);

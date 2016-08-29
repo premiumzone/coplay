@@ -1,0 +1,29 @@
+<div class="user-profile state-content__container state-content__container--scrollable">
+  <header class="user-profile__header user-profile__meta-section">
+    {{#if spotifyAvatarURL}}
+      <img class="user-profile__avatar" src="{{spotifyAvatarURL}}" alt="">
+    {{/if}}
+    <h2 class="user-profile__full-name">
+      {{#if spotifyFullName}}
+        {{spotifyFullName}}
+      {{else}}
+        {{#if spotifyUsername}}
+          {{spotifyUsername}}
+        {{else}}
+          Unknown User
+        {{/if}}
+      {{/if}}
+    </h2>
+  </header>
+
+  {{#if spotifyTopTracks}}
+    <section class="user-profile__meta-section">
+      <h3 class="user-profile__meta-title">Top Tracks</h3>
+      <ol class="playlist">
+      {{#each spotifyTopTracks}}
+        {{> playlist_item}}
+      {{/each}}
+      </ol>
+    </section>
+  {{/if}}
+</div>

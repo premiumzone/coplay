@@ -1,0 +1,19 @@
+<div class="js-choose-songs-to-add choose-songs-to-add">
+  <div class="state-content__container state-content__container--scrollable">
+    <h2>You joined Premium Zone!</h2>
+    <p>
+      We’ll add these songs to the collaborative playlist.<br>
+      Remove a song to replace it.
+    </p>
+
+    <ol class="js-user-playlist-tracks playlist playlist--choosing-tracks">
+    {{#each spotifyTopTracks}}
+      {{> playlist_item}}
+    {{/each}}
+    </ol>
+  </div>
+
+  <footer class="footer__container center row">
+    <button type="button" class="js-confirm-songs-to-add btn btn--expanded btn--ok">Add these songs</button>
+  </footer>
+</div>
