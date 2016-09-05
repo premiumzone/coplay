@@ -50,4 +50,4 @@ get the current zone.
 
 ## License
 
-GNU GPLv3, see [LICENSE](https://github.com/premiumzone/coplay/blob/master/LICENSE)
+MIT, see [LICENSE](https://github.com/premiumzone/coplay/blob/master/LICENSE)

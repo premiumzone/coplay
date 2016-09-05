@@ -4,7 +4,7 @@
   "description": "",
   "main": "app/index.js",
   "author": "Telia Company",
-  "license": "GPL-3.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/premiumzone/coplay.git"
