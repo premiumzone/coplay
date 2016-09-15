@@ -28,7 +28,7 @@ const ZoneController = {
 
       // look up proper user objects for each connected client
       const lookupUser = function(index, cb) {
-        UserModel.findByMac(data.clients[index].mac, (user) => {
+        UserModel.findByUsername(data.clients[index].userId, (user) => {
           if (user) {
             data.clients[index] = user;
           }
@@ -51,6 +51,25 @@ const ZoneController = {
     request.get({url: config.whoamiURL}, (err, httpResponse, body) => {
       if (err) {
         console.error('Failed to request MAC address from RGW: ', err);
+        res.json(JSON.parse(err));
+        return;
+      }
+
+      const data = JSON.parse(body);
+      res.json(data);
+    });
+  },
+
+  register: function(req, res) {
+    const url = `${config.zoneAPI.baseURL}/register?apikey=${config.zoneAPI.key}`;
+    const userData = req.body.user;
+
+    request.post({
+      url: url,
+      form: { mac: userData.mac, userId: userData.spotifyUsername }
+    }, (err, httpResponse, body) => {
+      if (err) {
+        console.error('Failed to register client to API:', err);
         res.json(JSON.parse(err));
         return;
       }

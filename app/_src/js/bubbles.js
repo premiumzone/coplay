@@ -264,7 +264,7 @@
     console.debug('Bubbles.addNode: ', nodeData);
 
     this._nodes.push({
-      id: nodeData.mac,
+      id: nodeData.spotifyUsername,
       spotifyAvatarURL: nodeData.spotifyAvatarURL,
       spotifyUsername: nodeData.spotifyUsername,
       spotifyFullName: nodeData.spotifyFullName,

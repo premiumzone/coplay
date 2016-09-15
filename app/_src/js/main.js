@@ -12,7 +12,7 @@
 
     this._zoneData = {
       'clients': [],
-      'is_zone': false,
+      'isZone': false,
       'zone': null
     };
     this._userData = {};
@@ -59,7 +59,7 @@
      */
     teliaCoplay.onUserDisconnected = teliaCoplay.utils.proxy(function(user) {
       console.debug('%conUserDisconnected', 'font-weight: bold', user);
-      this._bubbles.removeNode(user.mac);
+      this._bubbles.removeNode(user.spotifyUsername);
     }, this);
 
     /**
@@ -76,14 +76,14 @@
         userQueuedTracks
       );
 
-      this._bubbles.replaceNode(user.mac, user);
+      this._bubbles.replaceNode(user.spotifyUsername, user);
 
       if (!userQueuedTracks) {
         return;
       }
 
       var myUser = this._getExistingUser();
-      if (myUser && typeof(myUser) === 'object' && user.mac === myUser.mac) {
+      if (myUser && typeof(myUser) === 'object' && user.spotifyUsername === myUser.spotifyUsername) {
         // updated user is the same as the local current user
         return;
       }
@@ -157,13 +157,14 @@
     teliaCoplay.utils.request('/api/v1/zone', {
       onSuccess: function(zoneData) {
         _this._zoneData = zoneData;
+        console.log(_this._zoneData);
 
         // ensure local persisted user (if any) is in sync with zone data
         var existingUser = _this._getExistingUser();
         if (existingUser && _this._zoneData.clients && _this._zoneData.clients.length) {
           teliaCoplay.utils.setPersistedState('user', null);
           var existingUserClient = _this._zoneData.clients.filter(function(c) {
-            return c.mac === existingUser.mac;
+            return c.spotifyUsername === existingUser.spotifyUsername;
           })[0];
           if (existingUserClient && existingUserClient.spotifyUsername) {
             teliaCoplay.utils.setPersistedState('user', existingUserClient);
@@ -241,21 +242,39 @@
         }
         userData.mac = me.mac;
 
-        console.log('Saving user…', userData);
-
-        // 2. Persist user in database
-        teliaCoplay.utils.request('/api/v1/user', {
+        // 2. Register user with Zone API
+        console.log('Registering user…', userData.mac);
+        teliaCoplay.utils.request('/api/v1/register', {
           method: 'POST',
           data: JSON.stringify({ user: userData }),
           onSuccess: function(response) {
-            if (response && typeof(response) === 'object' && response.code === 'ECONNRESET') {
-              onError.apply(_this, arguments);
-            } else {
-              teliaCoplay.utils.setPersistedState('user', response);
-              successCallback.apply(_this, arguments);
-            }
+            console.log('successful reigster', response);
+
+            // 3. Persist user in database
+            console.log('Saving user…', userData);
+            teliaCoplay.utils.request('/api/v1/user', {
+              method: 'POST',
+              data: JSON.stringify({ user: userData }),
+              onSuccess: function(response) {
+                if (response && typeof(response) === 'object' && response.code === 'ECONNRESET') {
+                  onError.apply(_this, arguments);
+                } else {
+                  teliaCoplay.utils.setPersistedState('user', response);
+                  successCallback.apply(_this, arguments);
+                }
+              },
+              onError: onError
+            });
           },
-          onError: onError
+          onError: function(response, request) {
+            console.log('Failed to register user:', response, request);
+            teliaCoplay.utils.trackError({
+              'message': 'Failed to register user with Zone API',
+              'details': 'Status: '+request.status+' ('+request.statusText+')'
+            });
+            alert('An error occurred, please try again.');
+            teliaCoplay.StateManager.setState('/');
+          }
         });
       },
       onError: function(response, request) {
@@ -369,7 +388,7 @@
    * @return {Boolean}
    */
   Main.prototype._validateInZone = function() {
-    var inZone = this._zoneData.is_zone;  // jshint ignore:line
+    var inZone = this._zoneData.isZone;
 
     if (!inZone) {
       teliaCoplay.StateManager.setState('/not-in-zone');
