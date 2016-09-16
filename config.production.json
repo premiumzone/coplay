@@ -1,0 +1,12 @@
+{
+  "apps": [{
+    "name": "coplay",
+    "script": "app/index.js",
+    "watch": false,
+    "log_date_format": "YYYY-MM-DD HH:mm:ss Z",
+    "env": {
+      "NODE_ENV": "production",
+      "PORT": 9000
+    }
+  }]
+}
