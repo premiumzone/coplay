@@ -12,7 +12,7 @@ const ZoneController = {
    */
   zone: function(req, res) {
     const requestIP = process.env.PUBLIC_TEST_IP || req.ip;  // use env var to manually set IP if e.g. running locally
-    const url = `${config.zoneAPI.endpointURL}?ip=${requestIP}&apikey=${config.zoneAPI.key}`;
+    const url = `${config.zoneAPI.baseURL}/zone?ip=${requestIP}&apikey=${config.zoneAPI.key}`;
 
     request.get({url: url}, (err, httpResponse, body) => {
       if (err) {
