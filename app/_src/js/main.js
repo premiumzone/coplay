@@ -76,7 +76,7 @@
         userQueuedTracks
       );
 
-      this._bubbles.replaceNode(user.spotifyUsername, user);
+      this._bubbles.replaceOrAddNode(user.spotifyUsername, user);
 
       if (!userQueuedTracks) {
         return;

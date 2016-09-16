@@ -290,12 +290,10 @@
    * @param {String} replaceNodeID
    * @param {Object} replacingNodeData
    */
-  Bubbles.prototype.replaceNode = function(replaceNodeID, replacingNodeData) {
+  Bubbles.prototype.replaceOrAddNode = function(replaceNodeID, replacingNodeData) {
     console.debug('Bubbles.replaceNode: ', arguments);
 
-    if (this.removeNode(replaceNodeID, true) === false) {
-      return;
-    }
+    this.removeNode(replaceNodeID, true);
 
     var _this = this;
     setTimeout(function() {
