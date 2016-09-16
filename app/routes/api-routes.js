@@ -11,6 +11,7 @@ const Routes = function(app) {
 
   router.post('/user', UserController.createUser);
 
+  router.post('/register', ZoneController.register);
   router.get('/zone', ZoneController.zone);
   router.get('/whoami', ZoneController.whoami);
 

@@ -19,7 +19,7 @@ const WebhookController = {
     switch(data.event_type) {  // jshint ignore:line
       case 'connected':
         // look up proper user object of connecting user
-        UserModel.findByMac(user.mac, (persistedUser) => {
+        UserModel.findByUsername(user.userId, (persistedUser) => {
           if (persistedUser) {
             user = persistedUser;
           }
@@ -29,7 +29,7 @@ const WebhookController = {
 
       case 'disconnected':
         // look up proper user object of disconnecting user
-        UserModel.findByMac(user.mac, (persistedUser) => {
+        UserModel.findByUsername(user.userId, (persistedUser) => {
           if (persistedUser) {
             user = persistedUser;
           }

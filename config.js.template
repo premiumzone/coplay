@@ -17,7 +17,7 @@ module.exports = {
   },
 
   zoneAPI: {
-    endpointURL: 'https://api.premiumzone.com/v1/zone',
+    baseURL: 'https://api.premiumzone.com/v1',
     key: ''
   }
 };

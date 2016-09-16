@@ -4,11 +4,10 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const UserSchema = new Schema({
-  mac: {
+  spotifyUsername: {
     type: String,
     unique: true
   },
-  spotifyUsername: String,
   spotifyAvatarURL: String,
   spotifyFullName: String,
   spotifyGuessedFirstName: String,
@@ -20,7 +19,7 @@ UserSchema.statics.findOrCreate = function(userData, cb) {
   //console.log('UserSchema - finding or creating user', userData);
 
   const User = this;
-  const criteria = { mac: userData.mac };
+  const criteria = { spotifyUsername: userData.spotifyUsername };
 
   this.findOne(criteria, (err, user) => {
     if (err) { throw err; }
@@ -41,7 +40,7 @@ UserSchema.statics.findOrCreate = function(userData, cb) {
 UserSchema.statics.updateOrCreate = function(userData, cb) {
   //console.log('UserSchema.statics.updateOrCreate - userData: ', userData);
 
-  const criteria = { mac: userData.mac };
+  const criteria = { spotifyUsername: userData.spotifyUsername };
   const options = {
     upsert: true,
     setDefaultsOnInsert: true,
@@ -56,17 +55,17 @@ UserSchema.statics.updateOrCreate = function(userData, cb) {
   });
 };
 
-UserSchema.statics.findByMac = function(mac, cb) {
-  console.log('UserSchema.statics.findByMac - mac: ', mac);
+UserSchema.statics.findByUsername = function(username, cb) {
+  console.log('UserSchema.statics.findByUsername - username: ', username);
 
-  if (!mac || typeof(mac) !== 'string') {
-    throw Error(`Invalid mac address (${mac}).`);
+  if (!username || typeof(username) !== 'string') {
+    throw Error(`Invalid username (${username}).`);
   }
   if (typeof(cb) !== 'function') {
     throw Error('Invalid callback.');
   }
 
-  const criteria = { mac: mac };
+  const criteria = { spotifyUsername: username };
   const options = {
     '_id': 0,
     '__v': 0
